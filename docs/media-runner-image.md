@@ -7,11 +7,11 @@ podman run --rm --userns=keep-id \
   -v "$PWD/input:/work/input:ro" \
   -v "$PWD/output:/work/output" \
   senshac-media-runner:candidate images
+```
 
 Published images use `ghcr.io/nacosolutions/senshac-media-processor`. The
 package name intentionally differs from the repository name because the legacy
 web repository owns the historical `senshac-media-runner` package.
-```
 
 Use `scripts/build-media-runner` for local builds. R2 credentials are passed
 only to `download`, `upload`, or `verify-r2` at runtime. They are never copied
