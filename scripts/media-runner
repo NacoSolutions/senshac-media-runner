@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+command="${1:-help}"
+shift || true
+
+case "$command" in
+  images)
+    exec bun "$root/scripts/media/process-images.ts" \
+      "${1:-/work/input}" "${2:-/work/output}"
+    ;;
+  object)
+    input="${1:?usage: media-runner object <input-file> [output-root] [media-key]}"
+    exec bun "$root/scripts/media/process-object.ts" \
+      "$input" "${2:-/work/output}" "${3:-$input}"
+    ;;
+  video)
+    input="${1:?usage: media-runner video <input.mp4> [output-root] [media-id]}"
+    exec "$root/scripts/media/process-video.sh" \
+      "$input" "${2:-/work/output}" "${3:-}"
+    ;;
+  font)
+    input="${1:?usage: media-runner font <input.ttf|otf> <output.woff2>}"
+    output="${2:?usage: media-runner font <input.ttf|otf> <output.woff2>}"
+    exec bun "$root/scripts/media/process-font.ts" "$input" "$output"
+    ;;
+  verify)
+    exec bun "$root/scripts/media/verify-output.ts" "${1:-/work/output}"
+    ;;
+  download)
+    bucket="${1:?usage: media-runner download <bucket> <key> [output-file]}"
+    key="${2:?usage: media-runner download <bucket> <key> [output-file]}"
+    exec bun "$root/scripts/media/download-r2.ts" \
+      "$bucket" "$key" "${3:-/work/input/source}"
+    ;;
+  upload)
+    exec bun "$root/scripts/media/upload-r2.ts" \
+      "${1:-/work/output}" "${2:-senshac-media-prod}"
+    ;;
+  verify-r2)
+    exec bun "$root/scripts/media/verify-r2.ts" \
+      "${1:-/work/output}" "${2:-senshac-media-prod}"
+    ;;
+  help|-h|--help)
+    cat <<'EOF'
+usage: media-runner <command> [arguments]
+
+commands:
+  images      Generate responsive AVIF and WebP variants.
+  object      Route one image, video, or font object by extension.
+  video       Generate an adaptive HLS stream.
+  font        Generate a language-subset WOFF2 font.
+  verify      Validate generated local output.
+  download    Download one R2 object into the input mount.
+  upload      Upload an output tree to R2.
+  verify-r2   Compare a local output tree with R2.
+EOF
+    ;;
+  *)
+    echo "unknown media-runner command: $command" >&2
+    exit 2
+    ;;
+esac

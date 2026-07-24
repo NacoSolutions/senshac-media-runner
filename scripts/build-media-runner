@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo="$(git rev-parse --show-toplevel)"
+runtime="${CONTAINER_RUNTIME:-podman}"
+target="${1:-senshac-media-runner:candidate}"
+base_image="senshac-media-runner:flox-base"
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
+
+flox containerize -d "$repo" --runtime "$runtime" --tag flox-base
+cp "$repo/package.json" "$repo/bun.lock" "$tmp/"
+cp -R "$repo/scripts" "$tmp/scripts"
+
+cat >"$tmp/Containerfile" <<'EOF'
+FROM senshac-media-runner:flox-base
+RUN ["/bin/mkdir", "-p", "/usr/bin", "/usr/lib", "/opt/python-site", "/opt/senshac-media-runner"]
+RUN ["/bin/ln", "-sf", "/bin/env", "/usr/bin/env"]
+RUN ["/bin/sh", "-c", "set -- /nix/store/*-glibc-*/lib/ld-linux-x86-64.so.2; test -e \"$1\"; /bin/ln -s \"${1%/*}\" /lib64"]
+RUN ["/bin/sh", "-c", "lib=\"$(gcc -print-file-name=libstdc++.so.6)\"; test -e \"$lib\"; /bin/ln -sf \"$lib\" /usr/lib/libstdc++.so.6"]
+RUN ["/bin/sh", "-c", "lib=\"$(gcc -print-file-name=libgcc_s.so.1)\"; test -e \"$lib\"; /bin/ln -sf \"$lib\" /usr/lib/libgcc_s.so.1"]
+RUN ["/bin/sh", "-c", "set -- /nix/store/*-python*-brotli-*/lib/python*/site-packages; test -d \"$1\"; for module in \"$1\"/*; do /bin/ln -s \"$module\" /opt/python-site/; done"]
+WORKDIR /opt/senshac-media-runner
+COPY package.json bun.lock ./
+RUN bun install --production --frozen-lockfile
+COPY scripts ./scripts
+RUN chmod +x scripts/media-runner scripts/media/process-video.sh
+ENV HOME=/tmp XDG_CONFIG_HOME=/tmp/.config
+ENV LD_LIBRARY_PATH=/usr/lib
+ENV SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt
+ENV NIX_SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt
+ENV NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-bundle.crt
+ENV PYTHONPATH=/opt/python-site
+LABEL org.opencontainers.image.source="https://github.com/NacoSolutions/senshac-media-runner"
+ENTRYPOINT ["/opt/senshac-media-runner/scripts/media-runner"]
+CMD ["help"]
+EOF
+
+exec "$runtime" build -f "$tmp/Containerfile" -t "$target" "$tmp"

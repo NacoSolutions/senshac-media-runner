@@ -1,0 +1,28 @@
+schema-version = "1.12.0"
+
+[install]
+bash.pkg-path = "bash"
+bun.pkg-path = "bun"
+cacert.pkg-path = "cacert"
+coreutils.pkg-path = "coreutils"
+ffmpeg.pkg-path = "ffmpeg"
+findutils.pkg-path = "findutils"
+gcc.pkg-path = "gcc"
+glibc.pkg-path = "glibc"
+gnugrep.pkg-path = "gnugrep"
+python-fonttools.pkg-path = "python313Packages.fonttools"
+python-brotli.pkg-path = "python313Packages.brotli"
+unzip.pkg-path = "unzip"
+
+[vars]
+NODE_ENV = "development"
+
+[hook]
+on-activate = '''
+  export PATH="$FLOX_ENV_PROJECT/scripts:$PATH"
+  GCC_RUNTIME_LIB="$(dirname "$(gcc -print-file-name=libstdc++.so.6)")"
+  export LD_LIBRARY_PATH="$GCC_RUNTIME_LIB${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+'''
+
+[options]
+systems = ["x86_64-linux"]

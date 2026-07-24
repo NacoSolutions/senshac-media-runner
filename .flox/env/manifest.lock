@@ -1,0 +1,454 @@
+{
+  "lockfile-version": 1,
+  "manifest": {
+    "schema-version": "1.12.0",
+    "install": {
+      "bash": {
+        "pkg-path": "bash"
+      },
+      "bun": {
+        "pkg-path": "bun"
+      },
+      "cacert": {
+        "pkg-path": "cacert"
+      },
+      "coreutils": {
+        "pkg-path": "coreutils"
+      },
+      "ffmpeg": {
+        "pkg-path": "ffmpeg"
+      },
+      "findutils": {
+        "pkg-path": "findutils"
+      },
+      "gcc": {
+        "pkg-path": "gcc"
+      },
+      "glibc": {
+        "pkg-path": "glibc"
+      },
+      "gnugrep": {
+        "pkg-path": "gnugrep"
+      },
+      "python-brotli": {
+        "pkg-path": "python313Packages.brotli"
+      },
+      "python-fonttools": {
+        "pkg-path": "python313Packages.fonttools"
+      },
+      "unzip": {
+        "pkg-path": "unzip"
+      }
+    },
+    "vars": {
+      "NODE_ENV": "development"
+    },
+    "hook": {
+      "on-activate": "  export PATH=\"$FLOX_ENV_PROJECT/scripts:$PATH\"\n  GCC_RUNTIME_LIB=\"$(dirname \"$(gcc -print-file-name=libstdc++.so.6)\")\"\n  export LD_LIBRARY_PATH=\"$GCC_RUNTIME_LIB${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}\"\n"
+    },
+    "options": {
+      "systems": [
+        "x86_64-linux"
+      ]
+    }
+  },
+  "packages": [
+    {
+      "attr_path": "bash",
+      "broken": false,
+      "derivation": "/nix/store/8wf253v4xmm0d42gw7msj9pwi8yp6l3i-bash-interactive-5.3p9.drv",
+      "description": "GNU Bourne-Again Shell, the de facto standard shell on Linux (for interactive use)",
+      "install_id": "bash",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "name": "bash-interactive-5.3p9",
+      "pname": "bash",
+      "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "rev_count": 1037713,
+      "rev_date": "2026-07-19T21:52:44Z",
+      "scrape_date": "2026-07-21T05:58:38.622251Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "5.3p9",
+      "outputs_to_install": [
+        "man",
+        "out",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/d3lkknd9f0r5nx5nlszb6vbzklyj7zx7-bash-interactive-5.3p9-debug",
+        "dev": "/nix/store/8mp5f2yh8p5xicpiv9s449zl94yhqw7v-bash-interactive-5.3p9-dev",
+        "doc": "/nix/store/rxm500ja8awzzlqjwlqfvjdn6wyrsk46-bash-interactive-5.3p9-doc",
+        "info": "/nix/store/iswmfij6iwiz5kixszvmajdhqgrbi3xc-bash-interactive-5.3p9-info",
+        "man": "/nix/store/gl5s34czgaqxb7y57apybw7l8pns3w2m-bash-interactive-5.3p9-man",
+        "out": "/nix/store/bbzjxfam8vv1nyikn5dsrazsw4ya5vzx-bash-interactive-5.3p9"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "bun",
+      "broken": false,
+      "derivation": "/nix/store/s6pwlamg08fy759cbdm1whk7lgymxzpn-bun-1.3.13.drv",
+      "description": "Incredibly fast JavaScript runtime, bundler, transpiler and package manager – all in one",
+      "install_id": "bun",
+      "license": "[ MIT, LGPL-2.1-only ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "name": "bun-1.3.13",
+      "pname": "bun",
+      "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "rev_count": 1037713,
+      "rev_date": "2026-07-19T21:52:44Z",
+      "scrape_date": "2026-07-21T05:58:38.759392Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.3.13",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/9ari7qcwfwkqcnr9kpf9fhbshmyhp98k-bun-1.3.13"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "cacert",
+      "broken": false,
+      "derivation": "/nix/store/ydmfwhdryvagi1vsyayhsfqisgl65xzi-nss-cacert-3.125.drv",
+      "description": "Bundle of X.509 certificates of public Certificate Authorities (CA)",
+      "install_id": "cacert",
+      "license": "MPL-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "name": "nss-cacert-3.125",
+      "pname": "cacert",
+      "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "rev_count": 1037713,
+      "rev_date": "2026-07-19T21:52:44Z",
+      "scrape_date": "2026-07-21T05:58:38.772829Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.125",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "hashed": "/nix/store/v1jymzj4r51iddakzjdgbkg6sgkpa9fl-nss-cacert-3.125-hashed",
+        "out": "/nix/store/8pzhla2fz926ir6kjlgqnfrz34bjsjl0-nss-cacert-3.125",
+        "p11kit": "/nix/store/hwww9kdg1jx6bn2gbgkkvzgf9jf7h6f3-nss-cacert-3.125-p11kit",
+        "unbundled": "/nix/store/s2rxkm6vyiv5d9m4c6ad71fhlwwflzjl-nss-cacert-3.125-unbundled"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "coreutils",
+      "broken": false,
+      "derivation": "/nix/store/nvmwza7ls167mw3j9fd60h009nwb5c17-coreutils-9.11.drv",
+      "description": "GNU Core Utilities",
+      "install_id": "coreutils",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "name": "coreutils-9.11",
+      "pname": "coreutils",
+      "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "rev_count": 1037713,
+      "rev_date": "2026-07-19T21:52:44Z",
+      "scrape_date": "2026-07-21T05:58:39.192915Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "9.11",
+      "outputs_to_install": [
+        "out",
+        "out",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "debug": "/nix/store/i4pbjinhi819kdix5d3gb2vp0s9hwx3c-coreutils-9.11-debug",
+        "info": "/nix/store/vaxajdf1h760k6f50z9q6y1vzjzkm0gw-coreutils-9.11-info",
+        "out": "/nix/store/cp7wjv1pl4wapfk48svvizxd089v9h0a-coreutils-9.11"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "ffmpeg",
+      "broken": false,
+      "derivation": "/nix/store/f9lia7gxzly5483r0vcjvdckn044sivc-ffmpeg-8.1.2.drv",
+      "description": "Complete, cross-platform solution to record, convert and stream audio and video",
+      "install_id": "ffmpeg",
+      "license": "[ LGPL-2.1-or-later, GPL-2.0-or-later, LGPL-3.0-or-later, GPL-3.0-or-later ]",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "name": "ffmpeg-8.1.2",
+      "pname": "ffmpeg",
+      "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "rev_count": 1037713,
+      "rev_date": "2026-07-19T21:52:44Z",
+      "scrape_date": "2026-07-21T05:58:40.051682Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "8.1.2",
+      "outputs_to_install": [
+        "bin",
+        "bin",
+        "man"
+      ],
+      "outputs": {
+        "bin": "/nix/store/biq1laydwsk5vbc26qblm7n8bwz08hnm-ffmpeg-8.1.2-bin",
+        "data": "/nix/store/w0iii9qik0q9hkyhg48scrky36s5wr10-ffmpeg-8.1.2-data",
+        "dev": "/nix/store/i670hqnvklnjbjiicnm712nrcf6nnn0h-ffmpeg-8.1.2-dev",
+        "doc": "/nix/store/2ma5d50rz57drn9rfcpihpqnk40dgsyg-ffmpeg-8.1.2-doc",
+        "lib": "/nix/store/9zydfg5hfbqg8ixiy6r3q875wjr3szyy-ffmpeg-8.1.2-lib",
+        "man": "/nix/store/3l520ms6yzr1wzpzkdjjmnqv3zlj400l-ffmpeg-8.1.2-man",
+        "out": "/nix/store/dqmy01y89jgl1kibs9qzfdhj5kppd32p-ffmpeg-8.1.2"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "findutils",
+      "broken": false,
+      "derivation": "/nix/store/lzv9x9lf0glknw6r5srs9afbsl58qhxs-findutils-4.10.0.drv",
+      "description": "GNU Find Utilities, the basic directory searching utilities of the GNU operating system",
+      "install_id": "findutils",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "name": "findutils-4.10.0",
+      "pname": "findutils",
+      "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "rev_count": 1037713,
+      "rev_date": "2026-07-19T21:52:44Z",
+      "scrape_date": "2026-07-21T05:58:40.087271Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.10.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/wxgh429bpj5qf08kg5c1974kh6avzcvv-findutils-4.10.0-info",
+        "locate": "/nix/store/p6wrdgkz9k8l9gw3zz4qlpiffz93xhbw-findutils-4.10.0-locate",
+        "out": "/nix/store/f4bixss3h2i80asiz45aj4qmplvmam4k-findutils-4.10.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gcc",
+      "broken": false,
+      "derivation": "/nix/store/q78xs1xfvmjrsj9aj4kaicv13qgp67ip-gcc-wrapper-15.2.0.drv",
+      "description": "GNU Compiler Collection, version 15.2.0 (wrapper script)",
+      "install_id": "gcc",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "name": "gcc-wrapper-15.2.0",
+      "pname": "gcc",
+      "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "rev_count": 1037713,
+      "rev_date": "2026-07-19T21:52:44Z",
+      "scrape_date": "2026-07-21T05:58:40.420134Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "15.2.0",
+      "outputs_to_install": [
+        "man",
+        "man",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/9x640dyjh4kxiw70ifpp5s2bcnk7l2ai-gcc-wrapper-15.2.0-info",
+        "man": "/nix/store/l4ybxax0plgjmcmna8lzyv2gal11k7m3-gcc-wrapper-15.2.0-man",
+        "out": "/nix/store/vdaz6sk455r8sbpi7wzaf9vlz5i9yyvx-gcc-wrapper-15.2.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "glibc",
+      "broken": false,
+      "derivation": "/nix/store/kbzwgrmjgfh5if2mffdb1nnvh36j5kra-glibc-2.42-67.drv",
+      "description": "GNU C Library",
+      "install_id": "glibc",
+      "license": "LGPL-2.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "name": "glibc-2.42-67",
+      "pname": "glibc",
+      "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "rev_count": 1037713,
+      "rev_date": "2026-07-19T21:52:44Z",
+      "scrape_date": "2026-07-21T05:58:40.684479Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "2.42-67",
+      "outputs_to_install": [
+        "bin",
+        "bin",
+        "bin"
+      ],
+      "outputs": {
+        "bin": "/nix/store/1k05xwhd5wjciwrr6zd54mfw8za5lqnz-glibc-2.42-67-bin",
+        "debug": "/nix/store/gny088paqyg3ppx8m9na6zdsxds87gzr-glibc-2.42-67-debug",
+        "dev": "/nix/store/9bpdf8r3rlrffl5y5188xd8mb879vpb8-glibc-2.42-67-dev",
+        "getent": "/nix/store/pkgbgand2kcb7ws8xv9d1z99yzizjknm-glibc-2.42-67-getent",
+        "out": "/nix/store/ias8xacs1h3jy7xgwi2awvim61k2ji6c-glibc-2.42-67",
+        "static": "/nix/store/kx39p6ppjq5nz96ykhcdhi5qmvgiaw9q-glibc-2.42-67-static"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "gnugrep",
+      "broken": false,
+      "derivation": "/nix/store/9ybf2w295qc7h5iafn7id4yh657yvicz-gnugrep-3.12.drv",
+      "description": "GNU implementation of the Unix grep command",
+      "install_id": "gnugrep",
+      "license": "GPL-3.0-or-later",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "name": "gnugrep-3.12",
+      "pname": "gnugrep",
+      "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "rev_count": 1037713,
+      "rev_date": "2026-07-19T21:52:44Z",
+      "scrape_date": "2026-07-21T05:58:41.341088Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "3.12",
+      "outputs_to_install": [
+        "out",
+        "out",
+        "out",
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "info": "/nix/store/i1334asik47zj1wyaq22a1x24nwjd7nq-gnugrep-3.12-info",
+        "out": "/nix/store/p48bl1kiw42fakak404srawmlr730b7j-gnugrep-3.12"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python313Packages.brotli",
+      "broken": false,
+      "derivation": "/nix/store/l1s9kwpbcjb5laan5l2ynbjng62lxcmn-python3.13-brotli-1.2.0.drv",
+      "description": "Generic-purpose lossless compression algorithm",
+      "install_id": "python-brotli",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "name": "python3.13-brotli-1.2.0",
+      "pname": "brotli",
+      "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "rev_count": 1037713,
+      "rev_date": "2026-07-19T21:52:44Z",
+      "scrape_date": "2026-07-21T05:59:45.813619Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "1.2.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/m0pkzvgyl2fv1zfc1dkncp1sshfadpax-python3.13-brotli-1.2.0-dist",
+        "out": "/nix/store/lsvpz2b71ddbgsd0p5mi1497jx2nwws2-python3.13-brotli-1.2.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "python313Packages.fonttools",
+      "broken": false,
+      "derivation": "/nix/store/wpxl6x9h0g84kw2jgrscsizgv2ma3sg9-python3.13-fonttools-4.63.0.drv",
+      "description": "Library to manipulate font files from Python",
+      "install_id": "python-fonttools",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "name": "python3.13-fonttools-4.63.0",
+      "pname": "fonttools",
+      "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "rev_count": 1037713,
+      "rev_date": "2026-07-19T21:52:44Z",
+      "scrape_date": "2026-07-21T05:59:49.951693Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "4.63.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "dist": "/nix/store/5qk24blq2fkajyfzix7yvggrcasgra2l-python3.13-fonttools-4.63.0-dist",
+        "out": "/nix/store/aj4ixghfds55a6p8231haylwqggsiq25-python3.13-fonttools-4.63.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "unzip",
+      "broken": false,
+      "derivation": "/nix/store/jm12pz459wrdbbm8m1gmqyn0nb1a8sim-unzip-6.0.drv",
+      "description": "Extraction utility for archives compressed in .zip format",
+      "install_id": "unzip",
+      "license": "Info-ZIP",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "name": "unzip-6.0",
+      "pname": "unzip",
+      "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
+      "rev_count": 1037713,
+      "rev_date": "2026-07-19T21:52:44Z",
+      "scrape_date": "2026-07-21T06:02:20.951982Z",
+      "stabilities": [
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "6.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/hmx43mjz8dsj03spqpc8j3rp1s9xmj2s-unzip-6.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    }
+  ]
+}

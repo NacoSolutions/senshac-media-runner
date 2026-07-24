@@ -1,0 +1,9 @@
+node_modules/
+.flox/run/
+.flox/cache/
+.flox/log/
+.flox/lib/
+.flox/.git/
+result
+.media-input/
+.media-output/
