@@ -66,8 +66,10 @@ jobs:
           "$MEDIA_RUNNER" object "/work/input/source.${extension}" /work/output "$MEDIA_KEY"
 
       - name: Verify generated assets
-        run: "$MEDIA_RUNNER" verify /work/output
+        run: |
+          "$MEDIA_RUNNER" verify /work/output
 
       - name: Upload processed assets
         if: env.MEDIA_DRY_RUN != 'true'
-        run: "$MEDIA_RUNNER" upload /work/output senshac-media-prod
+        run: |
+          "$MEDIA_RUNNER" upload /work/output senshac-media-prod
