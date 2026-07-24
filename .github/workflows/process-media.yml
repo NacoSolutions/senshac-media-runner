@@ -1,0 +1,73 @@
+name: Process uploaded media
+
+on:
+  repository_dispatch:
+    types: [senshac-media-uploaded]
+  workflow_dispatch:
+    inputs:
+      key:
+        description: R2 object key to process
+        required: true
+        type: string
+      dry_run:
+        description: Generate a local fixture and skip R2 network operations
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  packages: read
+
+concurrency:
+  group: media-${{ github.event.client_payload.key || inputs.key }}
+  cancel-in-progress: false
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/nacosolutions/senshac-media-processor@sha256:d070c3f6f98acb99d9f6f05060ffd69463c71e2ae1e422acafe0294580083dfe
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      MEDIA_KEY: ${{ github.event.client_payload.key || inputs.key }}
+      MEDIA_DRY_RUN: ${{ inputs.dry_run || 'false' }}
+      MEDIA_RUNNER: /opt/senshac-media-runner/scripts/media-runner
+    steps:
+      - name: Prepare workspace
+        run: mkdir -p /work/input /work/output
+
+      - name: Download raw object
+        if: env.MEDIA_DRY_RUN != 'true'
+        run: |
+          extension="${MEDIA_KEY##*.}"
+          "$MEDIA_RUNNER" download senshac-media-raw "$MEDIA_KEY" "/work/input/source.${extension}"
+
+      - name: Create local image fixture
+        if: env.MEDIA_DRY_RUN == 'true'
+        run: |
+          MEDIA_KEY=images/act-smoke.png
+          echo "MEDIA_KEY=$MEDIA_KEY" >> "$GITHUB_ENV"
+          cat > /work/input/source.png <<'EOF'
+          <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900">
+            <rect width="1200" height="900" fill="#111"/>
+            <rect x="300" y="225" width="600" height="450" fill="#ef6b2e"/>
+          </svg>
+          EOF
+
+      - name: Process object
+        run: |
+          extension="${MEDIA_KEY##*.}"
+          "$MEDIA_RUNNER" object "/work/input/source.${extension}" /work/output "$MEDIA_KEY"
+
+      - name: Verify generated assets
+        run: "$MEDIA_RUNNER" verify /work/output
+
+      - name: Upload processed assets
+        if: env.MEDIA_DRY_RUN != 'true'
+        run: "$MEDIA_RUNNER" upload /work/output senshac-media-prod
