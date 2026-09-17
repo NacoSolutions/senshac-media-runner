@@ -13,3 +13,5 @@ verified digest; never change a checked-in consumer to `latest`.
 - Start work with `sd prime` for tracker context, then use `sd ready` to find unblocked work.
 - Capture durable project knowledge with `ml record <domain> --type <type> "..."`; run `ml prime` before and during work when existing expertise may apply.
 - Keep `.seeds/`, `.mulch/`, and `.gitattributes` changes in the same commit as related setup or workflow changes.
+- On onboarding, run `sd prime`, `sd ready`, and `ml prime --all`; create a focused local Seed before implementation.
+- Before handoff, run `sd doctor` and `ml validate`; record durable media-runner conventions with `ml record media-runner`.
