@@ -5,7 +5,8 @@ contract, R2 transfer helpers, and publication workflow. It does not own Astro
 components, Tina content, layout loading policy, Instagram scheduling, or the
 canonical Senshac tracker.
 
-Build and test image changes locally before publishing. Consumers must pin a
+Build and test image changes locally before publishing. The ownership and CLI
+contract is documented in `docs/media-runner-contract.md`. Consumers must pin a
 verified digest; never change a checked-in consumer to `latest`.
 
 ## Seeds and Mulch

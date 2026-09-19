@@ -6,6 +6,11 @@ command="${1:-help}"
 shift || true
 
 case "$command" in
+  contract)
+    cat <<'EOF'
+{"version":1,"mounts":{"input":"/work/input:ro","output":"/work/output:rw"},"operations":["images","object","video","font","verify","download","upload","verify-r2"],"image_widths":[320,480,640,768,1024,1280,1920],"credentials":"transfer-operations-only"}
+EOF
+    ;;
   images)
     exec bun "$root/scripts/media/process-images.ts" \
       "${1:-/work/input}" "${2:-/work/output}"
@@ -47,6 +52,7 @@ case "$command" in
 usage: media-runner <command> [arguments]
 
 commands:
+  contract    Print the versioned mount and operation contract as JSON.
   images      Generate responsive AVIF and WebP variants.
   object      Route one image, video, or font object by extension.
   video       Generate an adaptive HLS stream.
