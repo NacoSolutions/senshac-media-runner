@@ -1,6 +1,8 @@
 # Media Runner Image
 
-The image transforms explicit mounted inputs into explicit outputs:
+The image transforms explicit mounted inputs into explicit outputs. See
+[the full ownership and command contract](media-runner-contract.md) for mount,
+credential, and producer/consumer boundaries:
 
 ```bash
 podman run --rm --userns=keep-id \
