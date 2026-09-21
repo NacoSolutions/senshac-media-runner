@@ -5,6 +5,14 @@ contract, R2 transfer helpers, and publication workflow. It does not own Astro
 components, Tina content, layout loading policy, Instagram scheduling, or the
 canonical Senshac tracker.
 
+## Agent guidance
+
+Use [Bounded Warren Task](.agents/skills/bounded-warren-task/SKILL.md) for focused
+changes to this media-processing, R2, and image/video pipeline repository. State
+the desired outcome with positive, specific instructions; use defense in depth
+and gentle coding to preserve adjacent behavior. Execute directly on the
+smallest relevant surface, keep the task bounded, and practice token economy.
+
 Build and test image changes locally before publishing. The ownership and CLI
 contract is documented in `docs/media-runner-contract.md`. Consumers must pin a
 verified digest; never change a checked-in consumer to `latest`.
