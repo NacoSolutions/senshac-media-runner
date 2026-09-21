@@ -30,3 +30,16 @@ verified digest; never change a checked-in consumer to `latest`.
 - Run the focused configuration or documentation validation for guidance changes.
 - Run `bun test && bun run typecheck` before handoff; build and test image changes locally before publishing.
 - Consumers must pin a verified image digest. Never use `latest` in checked-in workflow or consumer configuration.
+
+## Repository-local skills
+
+Use these concise skills for the matching work surface:
+
+| Skill | Use when |
+| --- | --- |
+| [`senshac-agent-principles`](.agents/skills/senshac-agent-principles/SKILL.md) | Every task; apply the portable principles for direct, specific, positive, defensive, gentle, token-efficient work. |
+| [`git-workflow`](.agents/skills/git-workflow/SKILL.md) | Starting, reviewing, committing, or handing off any change. |
+| [`security-review`](.agents/skills/security-review/SKILL.md) | Reviewing runner boundaries, credentials, mounts, digests, or transfer guidance. |
+| [`dependency-hygiene`](.agents/skills/dependency-hygiene/SKILL.md) | Evaluating dependency or lockfile changes, especially when the task should remain dependency-free. |
+| [`verification-before-completion`](.agents/skills/verification-before-completion/SKILL.md) | Before completion; run bounded docs/config checks, quality gates, tracker health, and final diff checks. |
+| [`bounded-warren-task`](.agents/skills/bounded-warren-task/SKILL.md) | Any focused Warren task that needs explicit scope and a clean handoff. |
