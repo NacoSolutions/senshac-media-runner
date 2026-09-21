@@ -16,3 +16,7 @@ verified digest; never change a checked-in consumer to `latest`.
 - Keep `.seeds/`, `.mulch/`, and `.gitattributes` changes in the same commit as related setup or workflow changes.
 - On onboarding, run `sd prime`, `sd ready`, and `ml prime --all`; create a focused local Seed before implementation.
 - Before handoff, run `sd doctor` and `ml validate`; record durable media-runner conventions with `ml record media-runner`.
+
+## Autonomous agent guidance
+
+For focused autonomous changes, follow `.agents/skills/bounded-warren-task/SKILL.md`. Use positive phrasing, specific instructions, defense-in-depth, gentle coding, direct execution, and token economy: state the desired outcome clearly, make the smallest safe change, validate relevant boundaries, act rather than speculate, and avoid unnecessary context or repetition.
