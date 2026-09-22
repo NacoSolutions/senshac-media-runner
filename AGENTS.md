@@ -43,3 +43,12 @@ Use these concise skills for the matching work surface:
 | [`dependency-hygiene`](.agents/skills/dependency-hygiene/SKILL.md) | Evaluating dependency or lockfile changes, especially when the task should remain dependency-free. |
 | [`verification-before-completion`](.agents/skills/verification-before-completion/SKILL.md) | Before completion; run bounded docs/config checks, quality gates, tracker health, and final diff checks. |
 | [`bounded-warren-task`](.agents/skills/bounded-warren-task/SKILL.md) | Any focused Warren task that needs explicit scope and a clean handoff. |
+
+## Portable rules and CLI skills
+
+Load `.agents/rules/` for Caveman ultra, direct execution, positive phrasing,
+defense in depth, gentle coding, token economy, and llm-shorthand. Load
+`instruction-specificity.md` when authoring agent guidance. Use the local
+`seeds-cli`, `mulch-cli`, `warren-operations`, and
+`verification-before-completion` skills for tracker, expertise, Warren, and
+completion work. Load role-specific skills for the implementation surface.
