@@ -11,6 +11,10 @@ on:
       - "scripts/**"
   workflow_dispatch:
 
+concurrency:
+  group: publish-media-runner-main
+  cancel-in-progress: true
+
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: nacosolutions/senshac-media-processor
