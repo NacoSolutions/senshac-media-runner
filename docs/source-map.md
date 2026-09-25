@@ -11,7 +11,8 @@ Initial extraction from `NacoSolutions/senshac`:
 | `scripts/media/process-font.ts` | WOFF2 language subsetting |
 | `scripts/media/process-object.ts` | Extension-based object routing |
 | `scripts/media/{download,upload,verify}-r2.ts` | Explicit R2 transfer and verification |
-| `scripts/build-media-runner` | Reproducible Flox-to-OCI build |
+| `devenv.nix`, `.envrc` | Reproducible devenv package set and shell hooks |
+| `scripts/build-media-runner` | Reproducible devenv-to-OCI build |
 | `.github/workflows/publish-media-runner.yml` | Immutable GHCR publication |
 
 Astro components, Tina content, layout loading behavior, source-media staging,
