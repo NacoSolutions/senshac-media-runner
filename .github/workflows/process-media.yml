@@ -51,8 +51,6 @@ jobs:
       - name: Create local image fixture
         if: env.MEDIA_DRY_RUN == 'true'
         run: |
-          MEDIA_KEY=images/act-smoke.png
-          echo "MEDIA_KEY=$MEDIA_KEY" >> "$GITHUB_ENV"
           cat > /work/input/source.png <<'EOF'
           <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900">
             <rect width="1200" height="900" fill="#111"/>
