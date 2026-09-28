@@ -27,7 +27,7 @@ jobs:
   process:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/nacosolutions/senshac-media-processor@sha256:d070c3f6f98acb99d9f6f05060ffd69463c71e2ae1e422acafe0294580083dfe
+      image: ghcr.io/nacosolutions/senshac-media-processor@sha256:05add67cd6142da4f765d2beb8a7bd8de89aafc0c17159c409accee2a04a2156
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
