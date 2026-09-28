@@ -4,7 +4,11 @@ on:
   push:
     branches: [main]
     paths:
+      - "flake.nix"
+      - "flake.lock"
+      - "yarn.lock"
       - "devenv.nix"
+      - "devenv.lock"
       - ".envrc"
       - ".github/workflows/publish-media-runner.yml"
       - "bun.lock"
@@ -30,9 +34,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.1
       - uses: cachix/install-nix-action@v31
-      - name: Install devenv
-        run: nix profile install github:cachix/devenv
-
       - uses: docker/login-action@v4.5.1
         with:
           registry: ${{ env.REGISTRY }}

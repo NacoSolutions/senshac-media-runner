@@ -2,6 +2,7 @@
 
 {
   packages = with pkgs; [
+    act
     bash
     bun
     cacert

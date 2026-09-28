@@ -2,3 +2,5 @@ node_modules/
 result
 .media-input/
 .media-output/
+
+.devenv/
