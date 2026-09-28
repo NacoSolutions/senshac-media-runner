@@ -21,9 +21,21 @@ or install dependencies at runtime. Repository dispatch events use the
 `senshac-media-uploaded` type and provide the raw R2 object key as
 `client_payload.key`.
 
-Use `scripts/build-media-runner` for local builds. R2 credentials are passed
-only to `download`, `upload`, or `verify-r2` at runtime. They are never copied
-into image layers.
+The developer environment is managed with devenv. `flake.nix` builds the runtime
+image directly with Nix `dockerTools`; it includes the pinned Yarn v1 export of
+`bun.lock` to assemble runtime dependencies offline, while `bun.lock` remains the
+application lockfile. `scripts/build-media-runner` loads that image into Podman
+(or Docker) and tags it locally. No devenv environment is activated in the image.
+
+Run `devenv shell -- scripts/act-verify-media.sh senshac-media-runner:candidate`
+to exercise the real `process-media.yml` workflow against the local image. The
+helper substitutes only the pinned image in a temporary workflow copy, uses a
+local fixture with `dry_run=true`, and supplies only a dummy local GitHub token; no R2 or personal credentials are used. CI
+builds the OCI image; the publisher installs Nix only and publishes the verified
+image artifact.
+
+R2 credentials are passed only to `download`, `upload`, or `verify-r2` at
+runtime. They are never copied into image layers.
 
 Publication pushes `sha-<full-commit>`, pulls and smoke-tests that registry
 artifact, then advances `latest`. Consumers pin the resulting digest and may

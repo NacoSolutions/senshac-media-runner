@@ -18,14 +18,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
       - run: bun install --frozen-lockfile
       - run: bun run check
+      - name: Build OCI image
+        run: nix build .#ociImage --no-link
       - name: Validate media runner contract
         run: |
           test -s AGENTS.md
           test -s docs/media-runner-image.md
           test -x scripts/build-media-runner
+          test -x scripts/act-verify-media.sh
           test -x scripts/media-runner
