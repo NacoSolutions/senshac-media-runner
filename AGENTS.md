@@ -39,6 +39,9 @@ Use these concise skills for the matching work surface:
 | --- | --- |
 | [`senshac-agent-principles`](.agents/skills/senshac-agent-principles/SKILL.md) | Every task; apply the portable principles for direct, specific, positive, defensive, gentle, token-efficient work. |
 | [`git-workflow`](.agents/skills/git-workflow/SKILL.md) | Starting, reviewing, committing, or handing off any change. |
+| [`terrarium-triage`](.agents/skills/terrarium-triage/SKILL.md) | Select one owned, unblocked Seed from the canonical Senshac graph before implementation. |
+| [`media-runner-operations`](.agents/skills/media-runner-operations/SKILL.md) | Process, transfer, validate, or publish media-runner images and outputs. |
+| [`terrarium-triage`](.agents/skills/terrarium-triage/SKILL.md) | Select one owned, unblocked Seed from the canonical Senshac graph before implementation. |
 | [`security-review`](.agents/skills/security-review/SKILL.md) | Reviewing runner boundaries, credentials, mounts, digests, or transfer guidance. |
 | [`dependency-hygiene`](.agents/skills/dependency-hygiene/SKILL.md) | Evaluating dependency or lockfile changes, especially when the task should remain dependency-free. |
 | [`verification-before-completion`](.agents/skills/verification-before-completion/SKILL.md) | Before completion; run bounded docs/config checks, quality gates, tracker health, and final diff checks. |
