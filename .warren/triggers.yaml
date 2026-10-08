@@ -1,0 +1,7 @@
+- id: documentationwatch-weekly-p7k3ctqpf6aa
+  kind: cron
+  cron: '45 5 * * 3'
+  role: documentationwatch
+  timezone: Europe/Madrid
+  prompt: |
+    Inspect recent merged changes and their related documentation. Update only concrete, verified documentation drift; keep edits docs-only and run available documentation checks. If documentation is current, report that without committing.
